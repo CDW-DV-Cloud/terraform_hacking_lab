@@ -14,7 +14,13 @@ variable "ssh_key_name" {
 variable "ip_whitelist" {
   default = ["1.3.3.7/32"]
 }
+variable "vpc_id"{
+    type = string
+}
 
+variable "subnet_id" {
+    type = string
+}
 variable "tf_token" {
   type        = string
   description = "TFE Token"

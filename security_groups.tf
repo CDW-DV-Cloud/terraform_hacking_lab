@@ -8,7 +8,7 @@ locals {
 resource "aws_security_group" "allow_connections_hacking_lab" {
   name        = "allow_connections_hacking_lab"
   description = "Allow TLS inbound traffic for ssh but only for host PCs external IP. Created with terraform for the hacking lab"
-
+  vpc_id = var.vpc_id
   ingress {
     from_port   = 22
     to_port     = 22

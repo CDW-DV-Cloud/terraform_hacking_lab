@@ -4,7 +4,7 @@ terraform {
     organization = "dv_aws_cloud_org"
 
     workspaces {
-      name = "sandbox-13"
+      name = "hacking-lab"
     }
   }
 }
