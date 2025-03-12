@@ -1,0 +1,38 @@
+flowchart TB
+    User([User]) -->|SSH Port 22| SG
+    User -->|Access Apps| SG
+    
+    subgraph AWS["AWS (us-east-1)"]
+        SG[Security Group\nallow_connections_hacking_lab] --> EC2
+        
+        subgraph EC2["EC2 Instance (Ubuntu 18.04)"]
+            Docker[Docker Engine] --> Hackazon
+            Docker --> DVWA
+            Docker --> JuiceShop
+            Docker --> Shellshock
+        end
+    end
+    
+    Hackazon[Hackazon\nPort 80] -->|HTTP| Internet
+    DVWA[DVWA\nPort 81] -->|HTTP| Internet
+    JuiceShop[OWASP Juice Shop\nPort 82] -->|HTTP| Internet
+    Shellshock[Shellshock\nPort 8080] -->|HTTP| Internet
+    
+    Internet[(Internet)]
+    
+    classDef aws fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:black;
+    classDef sg fill:#F58536,stroke:#232F3E,stroke-width:2px,color:black;
+    classDef ec2 fill:#EC7211,stroke:#232F3E,stroke-width:2px,color:white;
+    classDef docker fill:#0DB7ED,stroke:#384D54,stroke-width:2px,color:white;
+    classDef app fill:#4CAF50,stroke:#2E7D32,stroke-width:1px,color:white;
+    classDef vulnapp fill:#F44336,stroke:#B71C1C,stroke-width:1px,color:white;
+    classDef internet fill:#9E9E9E,stroke:#616161,stroke-width:1px,color:white;
+    classDef user fill:#673AB7,stroke:#512DA8,stroke-width:1px,color:white;
+    
+    class AWS aws;
+    class SG sg;
+    class EC2 ec2;
+    class Docker docker;
+    class Internet internet;
+    class User user;
+    class Hackazon,DVWA,JuiceShop,Shellshock vulnapp;

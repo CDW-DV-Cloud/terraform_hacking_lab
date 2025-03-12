@@ -1,9 +1,19 @@
-/* 
-  Define the aws provider.
-*/
+terraform {
+  required_providers {
+    tfe = {
+      source  = "hashicorp/tfe"
+      version = ">= 0.25.3"
+    }
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.42.0"
+    }
+
+  }
+}
 provider "aws" {
-  access_key = "${var.aws_access_key}"
-  secret_key = "${var.aws_secret_key}"
-  region     = "${var.aws_region}"
-  version    = "~> 2.7"
+  region = var.region
+}
+provider "tfe" {
+  token = var.tf_token
 }

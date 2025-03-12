@@ -1,9 +1,9 @@
 /.terraform
 /secrets
 *.tfstate
+*.tfvars
 
 *.backup
 *_key
 secrets*
-variables*
 .vscode
